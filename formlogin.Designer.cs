@@ -29,38 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDangnhap));
-            label1 = new Label();
             nhapMatkhau = new Label();
             nhapten = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             Dangnhap = new Button();
             Dong = new Button();
+            label1 = new Label();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.BackColor = SystemColors.MenuHighlight;
-            label1.Dock = DockStyle.Top;
-            label1.Font = new Font("Microsoft Sans Serif", 35F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.InfoText;
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(696, 117);
-            label1.TabIndex = 1;
-            label1.Text = "ĐĂNG NHẬP";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
             // 
             // nhapMatkhau
             // 
             nhapMatkhau.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             nhapMatkhau.AutoSize = true;
             nhapMatkhau.BackColor = SystemColors.ButtonHighlight;
-            nhapMatkhau.Font = new Font("Segoe UI", 15F, FontStyle.Italic, GraphicsUnit.Point);
+            nhapMatkhau.Font = new Font("Segoe UI", 15F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             nhapMatkhau.Location = new Point(134, 268);
             nhapMatkhau.Name = "nhapMatkhau";
-            nhapMatkhau.Size = new Size(96, 28);
+            nhapMatkhau.Size = new Size(104, 28);
             nhapMatkhau.TabIndex = 2;
             nhapMatkhau.Text = "Mật Khẩu";
             nhapMatkhau.Click += label2_Click;
@@ -70,10 +56,10 @@
             nhapten.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             nhapten.AutoSize = true;
             nhapten.BackColor = SystemColors.Control;
-            nhapten.Font = new Font("Segoe UI", 15F, FontStyle.Italic, GraphicsUnit.Point);
+            nhapten.Font = new Font("Segoe UI", 15F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             nhapten.Location = new Point(134, 174);
             nhapten.Name = "nhapten";
-            nhapten.Size = new Size(151, 28);
+            nhapten.Size = new Size(161, 28);
             nhapten.TabIndex = 2;
             nhapten.Text = "Tên Đăng Nhập";
             nhapten.Click += label3_Click;
@@ -81,19 +67,21 @@
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(319, 174);
             textBox1.Name = "textBox1";
             textBox1.ScrollBars = ScrollBars.Both;
-            textBox1.Size = new Size(260, 23);
+            textBox1.Size = new Size(260, 27);
             textBox1.TabIndex = 3;
             // 
             // textBox2
             // 
             textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             textBox2.Location = new Point(319, 268);
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '*';
-            textBox2.Size = new Size(260, 23);
+            textBox2.Size = new Size(260, 27);
             textBox2.TabIndex = 4;
             // 
             // Dangnhap
@@ -125,6 +113,16 @@
             Dong.UseVisualStyleBackColor = false;
             Dong.Click += button3_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 44F, FontStyle.Italic, GraphicsUnit.Point);
+            label1.Location = new Point(183, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(326, 78);
+            label1.TabIndex = 7;
+            label1.Text = "Đăng nhập";
+            // 
             // FormDangnhap
             // 
             AcceptButton = Dangnhap;
@@ -134,14 +132,15 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(696, 439);
+            Controls.Add(label1);
             Controls.Add(Dong);
             Controls.Add(Dangnhap);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(nhapten);
             Controls.Add(nhapMatkhau);
-            Controls.Add(label1);
             Name = "FormDangnhap";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản Lý Phòng Khách Sạn";
             Load += FormDangnhap_Load;
             ResumeLayout(false);
@@ -149,12 +148,12 @@
         }
 
         #endregion
-        private Label label1;
         private Label nhapMatkhau;
         private Label nhapten;
         private TextBox textBox1;
         private TextBox textBox2;
         private Button Dangnhap;
         private Button Dong;
+        private Label label1;
     }
 }

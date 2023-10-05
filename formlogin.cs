@@ -31,18 +31,20 @@
         {
             if ((textBox1.Text == "") || textBox2.Text == "")
             {
-                MessageBox.Show("Bạn chưa nhập thông tin", "THÔNG BÁO",MessageBoxButtons.YesNoCancel);
+                MessageBox.Show("Bạn chưa nhập thông tin", "THÔNG BÁO");
             }
             else
             {
-                if ((textBox1.Text == "ha my") && (textBox2.Text == "123"))
+                if ((textBox1.Text == "a") && (textBox2.Text == "1"))
                 {
                     MessageBox.Show("Đăng nhập thành công", "Thông báo");
-                    Form formchinh = new formchinh();
-                    formchinh.ShowDialog();
+                    Form Trangchu = new Trangchu();
+                    this.Hide();//ẩn cửa sổ hiện tại, cửa sổ chứa đoạn mã này
+                    Trangchu.ShowDialog();
+                    this.Show();//quay lại form bị ẩn bởi lệnh hide()
                 }
                 else
-                    MessageBox.Show("Vui lòng nhập lại thông tin", "THÔNG BÁO",MessageBoxButtons.YesNoCancel);
+                    MessageBox.Show("Vui lòng nhập lại thông tin", "THÔNG BÁO");
 
             }
 

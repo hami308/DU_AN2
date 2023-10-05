@@ -30,11 +30,11 @@
         {
             panel1 = new Panel();
             dataGridView1 = new DataGridView();
-            xem = new Button();
             xoa = new Button();
             chinhsua = new Button();
             them = new Button();
             panel2 = new Panel();
+            tbtenkhachhang = new TextBox();
             panel7 = new Panel();
             tbidphong = new TextBox();
             label4 = new Label();
@@ -45,7 +45,6 @@
             tbmakhachhang = new TextBox();
             makhachhang = new Label();
             button1 = new Button();
-            tbtenkhachhang = new TextBox();
             panel5 = new Panel();
             tbsđt = new TextBox();
             label2 = new Label();
@@ -64,8 +63,8 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.MistyRose;
             panel1.Controls.Add(dataGridView1);
-            panel1.Controls.Add(xem);
             panel1.Controls.Add(xoa);
             panel1.Controls.Add(chinhsua);
             panel1.Controls.Add(them);
@@ -82,24 +81,14 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(401, 352);
             dataGridView1.TabIndex = 4;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // xem
-            // 
-            xem.BackColor = SystemColors.ActiveCaption;
-            xem.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            xem.Location = new Point(177, 0);
-            xem.Name = "xem";
-            xem.Size = new Size(75, 42);
-            xem.TabIndex = 3;
-            xem.Text = "Xem";
-            xem.UseVisualStyleBackColor = false;
             // 
             // xoa
             // 
-            xoa.BackColor = SystemColors.ActiveCaption;
+            xoa.BackColor = Color.FromArgb(255, 128, 128);
             xoa.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            xoa.Location = new Point(81, 0);
+            xoa.Location = new Point(104, 0);
             xoa.Name = "xoa";
             xoa.Size = new Size(75, 42);
             xoa.TabIndex = 2;
@@ -108,18 +97,19 @@
             // 
             // chinhsua
             // 
-            chinhsua.BackColor = SystemColors.ActiveCaption;
+            chinhsua.BackColor = Color.FromArgb(255, 128, 128);
             chinhsua.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            chinhsua.Location = new Point(280, 0);
+            chinhsua.Location = new Point(213, 0);
             chinhsua.Name = "chinhsua";
             chinhsua.Size = new Size(105, 42);
             chinhsua.TabIndex = 1;
             chinhsua.Text = "Chỉnh sửa";
             chinhsua.UseVisualStyleBackColor = false;
+            chinhsua.Click += chinhsua_Click;
             // 
             // them
             // 
-            them.BackColor = SystemColors.ActiveCaption;
+            them.BackColor = Color.FromArgb(255, 128, 128);
             them.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             them.Location = new Point(0, 0);
             them.Name = "them";
@@ -130,16 +120,26 @@
             // 
             // panel2
             // 
+            panel2.BackColor = Color.MistyRose;
+            panel2.Controls.Add(tbtenkhachhang);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(button1);
-            panel2.Controls.Add(tbtenkhachhang);
             panel2.Location = new Point(422, 16);
             panel2.Name = "panel2";
             panel2.Size = new Size(377, 418);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
+            // 
+            // tbtenkhachhang
+            // 
+            tbtenkhachhang.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tbtenkhachhang.Location = new Point(14, 13);
+            tbtenkhachhang.Name = "tbtenkhachhang";
+            tbtenkhachhang.Size = new Size(244, 29);
+            tbtenkhachhang.TabIndex = 5;
+            tbtenkhachhang.TextChanged += tbtenkhachhang_TextChanged;
             // 
             // panel7
             // 
@@ -160,7 +160,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.BackColor = SystemColors.InactiveCaption;
+            label4.BackColor = Color.FromArgb(255, 192, 192);
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(3, 16);
             label4.Name = "label4";
@@ -183,11 +183,12 @@
             tbtenkhach.Name = "tbtenkhach";
             tbtenkhach.Size = new Size(203, 23);
             tbtenkhach.TabIndex = 1;
+            tbtenkhach.TextChanged += tbtenkhach_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.InactiveCaption;
+            label1.BackColor = Color.FromArgb(255, 192, 192);
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(3, 16);
             label1.Name = "label1";
@@ -211,11 +212,12 @@
             tbmakhachhang.ReadOnly = true;
             tbmakhachhang.Size = new Size(203, 23);
             tbmakhachhang.TabIndex = 1;
+            tbmakhachhang.TextChanged += tbmakhachhang_TextChanged;
             // 
             // makhachhang
             // 
             makhachhang.AutoSize = true;
-            makhachhang.BackColor = SystemColors.InactiveCaption;
+            makhachhang.BackColor = Color.FromArgb(255, 192, 192);
             makhachhang.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             makhachhang.Location = new Point(3, 16);
             makhachhang.Name = "makhachhang";
@@ -225,7 +227,7 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ActiveCaption;
+            button1.BackColor = Color.FromArgb(255, 192, 192);
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(264, 5);
             button1.Name = "button1";
@@ -234,16 +236,9 @@
             button1.Text = "Tìm";
             button1.UseVisualStyleBackColor = false;
             // 
-            // tbtenkhachhang
-            // 
-            tbtenkhachhang.Location = new Point(13, 17);
-            tbtenkhachhang.Name = "tbtenkhachhang";
-            tbtenkhachhang.Size = new Size(215, 23);
-            tbtenkhachhang.TabIndex = 0;
-            tbtenkhachhang.TextChanged += textBox1_TextChanged;
-            // 
             // panel5
             // 
+            panel5.BackColor = Color.MistyRose;
             panel5.Controls.Add(tbsđt);
             panel5.Controls.Add(label2);
             panel5.Location = new Point(425, 216);
@@ -261,7 +256,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = SystemColors.InactiveCaption;
+            label2.BackColor = Color.FromArgb(255, 192, 192);
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(3, 16);
             label2.Name = "label2";
@@ -271,6 +266,7 @@
             // 
             // panel6
             // 
+            panel6.BackColor = Color.MistyRose;
             panel6.Controls.Add(tbcccd);
             panel6.Controls.Add(label3);
             panel6.Location = new Point(422, 274);
@@ -288,7 +284,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = SystemColors.InactiveCaption;
+            label3.BackColor = Color.FromArgb(255, 192, 192);
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(3, 16);
             label3.Name = "label3";
@@ -300,13 +296,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Linen;
+            BackColor = Color.MistyRose;
             ClientSize = new Size(800, 450);
             Controls.Add(panel6);
             Controls.Add(panel5);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "danhsachkhachhang";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Danh sách khách hàng";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -328,13 +325,11 @@
         #endregion
 
         private Panel panel1;
-        private Button xem;
         private Button xoa;
         private Button chinhsua;
         private Button them;
         private Panel panel2;
         private DataGridView dataGridView1;
-        private TextBox tbtenkhachhang;
         private Panel panel3;
         private Label makhachhang;
         private Button button1;
@@ -351,5 +346,6 @@
         private Panel panel7;
         private TextBox tbidphong;
         private Label label4;
+        private TextBox tbtenkhachhang;
     }
 }
