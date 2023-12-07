@@ -1,4 +1,16 @@
-﻿namespace GiaoDien_qlpks
+﻿using GiaoDien_qlpks.DAO;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace GiaoDien_qlpks
 {
     public partial class FormDangnhap : System.Windows.Forms.Form
     {
@@ -29,23 +41,34 @@
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if ((textBox1.Text == "") || textBox2.Text == "")
+
+            string tendangnhap = textBox1.Text;
+            string matkhau = textBox2.Text;
+           
+
+            if (!string.IsNullOrEmpty(tendangnhap) && !string.IsNullOrEmpty(matkhau) )
             {
-                MessageBox.Show("Bạn chưa nhập thông tin", "THÔNG BÁO");
+                // Kiểm tra mật khẩu 
+                DataProvider provider = new DataProvider();
+                string query = $"SELECT COUNT(*) FROM [dbo].[Table_USER] WHERE USERNAME = '{tendangnhap}' AND PASSWORD = '{matkhau}'";
+                if (provider.Kiemtra(query))
+                {
+                    MessageBox.Show(" Đăng nhập thành công !", "Thông báo");
+                    Form Trangchu = new Trangchu(tendangnhap);
+                    this.Hide();
+                    Trangchu.ShowDialog();
+                    this.Show();
+ 
+                }
+                else
+                {
+                    MessageBox.Show("Thông tin nhập đã sai . Vui lòng nhập lại!", "Thông báo");
+                }
+               
             }
             else
             {
-                if ((textBox1.Text == "a") && (textBox2.Text == "1"))
-                {
-                    MessageBox.Show("Đăng nhập thành công", "Thông báo");
-                    Form Trangchu = new Trangchu();
-                    this.Hide();//ẩn cửa sổ hiện tại, cửa sổ chứa đoạn mã này
-                    Trangchu.ShowDialog();
-                    this.Show();//quay lại form bị ẩn bởi lệnh hide()
-                }
-                else
-                    MessageBox.Show("Vui lòng nhập lại thông tin", "THÔNG BÁO");
-
+                MessageBox.Show("Bạn chưa nhập thông tin !", "Thông báo");
             }
 
         }
@@ -61,6 +84,11 @@
         }
 
         private void FormDangnhap_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

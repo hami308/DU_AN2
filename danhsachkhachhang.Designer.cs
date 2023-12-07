@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label5 = new Label();
+            tbsophong = new TextBox();
             dataGridView1 = new DataGridView();
-            xoa = new Button();
+            button1 = new Button();
             chinhsua = new Button();
-            them = new Button();
             panel2 = new Panel();
-            tbtenkhachhang = new TextBox();
             panel7 = new Panel();
-            tbidphong = new TextBox();
+            sophong = new TextBox();
             label4 = new Label();
             panel4 = new Panel();
             tbtenkhach = new TextBox();
@@ -44,7 +44,6 @@
             panel3 = new Panel();
             tbmakhachhang = new TextBox();
             makhachhang = new Label();
-            button1 = new Button();
             panel5 = new Panel();
             tbsđt = new TextBox();
             label2 = new Label();
@@ -64,19 +63,40 @@
             // panel1
             // 
             panel1.BackColor = Color.MistyRose;
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(tbsophong);
             panel1.Controls.Add(dataGridView1);
-            panel1.Controls.Add(xoa);
-            panel1.Controls.Add(chinhsua);
-            panel1.Controls.Add(them);
+            panel1.Controls.Add(button1);
             panel1.Location = new Point(12, 16);
             panel1.Name = "panel1";
             panel1.Size = new Size(404, 422);
             panel1.TabIndex = 0;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.FromArgb(255, 192, 192);
+            label5.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(29, 21);
+            label5.Name = "label5";
+            label5.Size = new Size(107, 28);
+            label5.TabIndex = 6;
+            label5.Text = "Số phòng :";
+            // 
+            // tbsophong
+            // 
+            tbsophong.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            tbsophong.Location = new Point(152, 18);
+            tbsophong.Name = "tbsophong";
+            tbsophong.Size = new Size(139, 34);
+            tbsophong.TabIndex = 5;
+            tbsophong.TextChanged += tbsophong_TextChanged;
+            // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.FromArgb(255, 192, 192);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 66);
+            dataGridView1.Location = new Point(0, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(401, 352);
@@ -84,78 +104,60 @@
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // xoa
+            // button1
             // 
-            xoa.BackColor = Color.FromArgb(255, 128, 128);
-            xoa.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            xoa.Location = new Point(104, 0);
-            xoa.Name = "xoa";
-            xoa.Size = new Size(75, 42);
-            xoa.TabIndex = 2;
-            xoa.Text = "Xoá";
-            xoa.UseVisualStyleBackColor = false;
+            button1.BackColor = Color.FromArgb(255, 192, 192);
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(305, 15);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 41);
+            button1.TabIndex = 1;
+            button1.Text = "Tìm";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // chinhsua
             // 
             chinhsua.BackColor = Color.FromArgb(255, 128, 128);
             chinhsua.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            chinhsua.Location = new Point(213, 0);
+            chinhsua.Location = new Point(140, 15);
             chinhsua.Name = "chinhsua";
-            chinhsua.Size = new Size(105, 42);
+            chinhsua.Size = new Size(100, 42);
             chinhsua.TabIndex = 1;
             chinhsua.Text = "Chỉnh sửa";
             chinhsua.UseVisualStyleBackColor = false;
             chinhsua.Click += chinhsua_Click;
             // 
-            // them
-            // 
-            them.BackColor = Color.FromArgb(255, 128, 128);
-            them.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            them.Location = new Point(0, 0);
-            them.Name = "them";
-            them.Size = new Size(75, 42);
-            them.TabIndex = 0;
-            them.Text = "Thêm";
-            them.UseVisualStyleBackColor = false;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.MistyRose;
-            panel2.Controls.Add(tbtenkhachhang);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(panel4);
+            panel2.Controls.Add(chinhsua);
             panel2.Controls.Add(panel3);
-            panel2.Controls.Add(button1);
             panel2.Location = new Point(422, 16);
             panel2.Name = "panel2";
             panel2.Size = new Size(377, 418);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
-            // tbtenkhachhang
-            // 
-            tbtenkhachhang.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbtenkhachhang.Location = new Point(14, 13);
-            tbtenkhachhang.Name = "tbtenkhachhang";
-            tbtenkhachhang.Size = new Size(244, 29);
-            tbtenkhachhang.TabIndex = 5;
-            tbtenkhachhang.TextChanged += tbtenkhachhang_TextChanged;
-            // 
             // panel7
             // 
-            panel7.Controls.Add(tbidphong);
+            panel7.Controls.Add(sophong);
             panel7.Controls.Add(label4);
             panel7.Location = new Point(0, 325);
             panel7.Name = "panel7";
             panel7.Size = new Size(377, 61);
             panel7.TabIndex = 4;
             // 
-            // tbidphong
+            // sophong
             // 
-            tbidphong.Location = new Point(152, 16);
-            tbidphong.Name = "tbidphong";
-            tbidphong.Size = new Size(203, 23);
-            tbidphong.TabIndex = 1;
+            sophong.Location = new Point(152, 18);
+            sophong.Name = "sophong";
+            sophong.ReadOnly = true;
+            sophong.RightToLeft = RightToLeft.No;
+            sophong.Size = new Size(203, 23);
+            sophong.TabIndex = 2;
             // 
             // label4
             // 
@@ -164,9 +166,9 @@
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(3, 16);
             label4.Name = "label4";
-            label4.Size = new Size(81, 21);
+            label4.Size = new Size(84, 21);
             label4.TabIndex = 0;
-            label4.Text = "ID phòng :";
+            label4.Text = "Số phòng :";
             // 
             // panel4
             // 
@@ -224,17 +226,6 @@
             makhachhang.Size = new Size(123, 21);
             makhachhang.TabIndex = 0;
             makhachhang.Text = "Mã khách hàng :";
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(255, 192, 192);
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(264, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 41);
-            button1.TabIndex = 1;
-            button1.Text = "Tìm";
-            button1.UseVisualStyleBackColor = false;
             // 
             // panel5
             // 
@@ -306,9 +297,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Danh sách khách hàng";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel4.ResumeLayout(false);
@@ -325,9 +316,7 @@
         #endregion
 
         private Panel panel1;
-        private Button xoa;
         private Button chinhsua;
-        private Button them;
         private Panel panel2;
         private DataGridView dataGridView1;
         private Panel panel3;
@@ -344,8 +333,9 @@
         private TextBox tbcccd;
         private Label label3;
         private Panel panel7;
-        private TextBox tbidphong;
         private Label label4;
-        private TextBox tbtenkhachhang;
+        private TextBox sophong;
+        private TextBox tbsophong;
+        private Label label5;
     }
 }

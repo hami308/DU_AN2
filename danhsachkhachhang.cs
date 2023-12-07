@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GiaoDien_qlpks.DAO;
 using Microsoft.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -21,23 +22,9 @@ namespace GiaoDien_qlpks
         }
         void loadkhachhanglist()
         {
-            try
-            {
-                string connectionSTR = @"Data Source=LAPTOP-JKMABAVK\TESTSQL;Initial Catalog=QUANLYPHONGKHACHSAN;Integrated Security=True;TrustServerCertificate=true;";
-                SqlConnection connection = new SqlConnection(connectionSTR);
-                string query = "SELECT * FROM [dbo].[Table.KHACHHANG]";
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                DataTable data = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-                connection.Close();
-                dataGridView1.DataSource = data;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
+            string query = "SELECT * FROM [dbo].[Table.KHACHHANG]";
+            DataProvider provider = new DataProvider();
+            dataGridView1.DataSource = provider.ExecuteQuery(query);
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -57,15 +44,15 @@ namespace GiaoDien_qlpks
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Đảm bảo chỉ số hàng hợp lệ được chọn
+            if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex]; // Lấy dữ liệu từ dòng đã chọn
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 tbmakhachhang.Text = row.Cells["MAKHACHHANG"].Value.ToString();
                 tbtenkhach.Text = row.Cells["TENKHACHHANG"].Value.ToString();
                 tbsđt.Text = row.Cells["SĐT"].Value.ToString();
                 tbcccd.Text = row.Cells["CCCD"].Value.ToString();
-                tbidphong.Text = row.Cells["IDPHONG"].Value.ToString();
-                // "Tên_Cột" là tên của cột mà bạn muốn lấy dữ liệu từ đó
+                sophong.Text = row.Cells["SOPHONG"].Value.ToString();
+
             }
         }
 
@@ -81,7 +68,51 @@ namespace GiaoDien_qlpks
 
         private void chinhsua_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(tbmakhachhang.Text) && !string.IsNullOrEmpty(tbtenkhach.Text) && !string.IsNullOrEmpty(tbsđt.Text) && !string.IsNullOrEmpty(tbcccd.Text) && !string.IsNullOrEmpty(sophong.Text))
+            {
+                string query = $"UPDATE [dbo].[Table.KHACHHANG] SET TENKHACHHANG = '{tbtenkhach.Text}',SĐT = '{tbsđt.Text}',CCCD = '{tbcccd.Text}',SOPHONG = '{sophong.Text}' WHERE MAKHACHHANG = '{tbmakhachhang.Text}'";
+                DataProvider provider = new DataProvider();
+                provider.ExecuteQuery(query);
+                loadkhachhanglist();
+                tbmakhachhang.Text = "";
+                tbtenkhach.Text = "";
+                tbcccd.Text = "";
+                tbsđt.Text = "";
+                sophong.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Vui Lòng Điền Đầy Đủ Thông Tin !");
+            }
+        }
 
+        private void tbidphong_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataProvider provider = new DataProvider();
+            string query = $"SELECT COUNT(*) FROM [dbo].[Table.KHACHHANG] WHERE SOPHONG ='{tbsophong.Text}'";
+            if (provider.Kiemtra(query))
+            {
+
+                string query1 = $"SELECT * FROM [dbo].[Table.KHACHHANG] WHERE SOPHONG='{tbsophong.Text}'";
+                dataGridView1.DataSource = provider.ExecuteQuery(query1);
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy số phòng hợp lệ!", "Thông báo!");
+            }
+        }
+
+        private void tbsophong_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbsophong.Text))
+            {
+                loadkhachhanglist();
+            }
         }
     }
 }
