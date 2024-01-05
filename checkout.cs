@@ -12,36 +12,11 @@ using System.Windows.Forms;
 
 namespace GiaoDien_qlpks
 {
-    public partial class checkout : Hoadon
+    public partial class checkout : Form
     {
         public checkout()
         {
             InitializeComponent();
-        }
-
-        protected void checkout_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void tabhoadon_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void tbsongayluutru_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint_2(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void Timkiem_Click(object sender, EventArgs e)
@@ -129,8 +104,10 @@ namespace GiaoDien_qlpks
 
                     string query1 = $"DELETE FROM [dbo].[Table_DATSANPHAM] WHERE MAKHACHHANG ='{maKH}'";
                     provider.ExecuteQuery(query1);
+
                     string query2 = $"DELETE FROM [dbo].[Table_DATPHONG] WHERE MAKHACHHANG ='{maKH}'";
                     provider.ExecuteQuery(query2);
+
                     string queryxoaKH = $"DELETE FROM [dbo].[Table.KHACHHANG] WHERE MAKHACHHANG ='{maKH}'";
                     provider.ExecuteQuery(queryxoaKH);
 
@@ -155,11 +132,6 @@ namespace GiaoDien_qlpks
             {
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
-        }
-
-        private void Tongtien_TextChanged_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

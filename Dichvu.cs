@@ -20,7 +20,7 @@ namespace GiaoDien_qlpks
             InitializeComponent();
             loaddichvulist();
         }
-         void loaddichvulist()
+        void loaddichvulist()
         {
             string query = "SELECT * FROM [dbo].[Table_SANPHAM]";
             DataProvider provider = new DataProvider();
@@ -92,7 +92,7 @@ namespace GiaoDien_qlpks
                 dongia.Text = row.Cells["DONGIA"].Value.ToString();
             }
         }
-        
+
         private void Them_Click(object sender, EventArgs e)
         {
 
@@ -111,7 +111,7 @@ namespace GiaoDien_qlpks
 
                     tensanpham.Text = "";
                     dongia.Text = "";
-                } 
+                }
                 else
                 {
                     MessageBox.Show("Sản phẩm đã tồn tại!", "Thông báo !");

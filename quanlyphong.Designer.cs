@@ -263,10 +263,10 @@
             tabdanhsach.Controls.Add(cbxem);
             tabdanhsach.Controls.Add(label6);
             tabdanhsach.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tabdanhsach.Location = new Point(4, 32);
+            tabdanhsach.Location = new Point(4, 24);
             tabdanhsach.Name = "tabdanhsach";
             tabdanhsach.Padding = new Padding(3);
-            tabdanhsach.Size = new Size(710, 424);
+            tabdanhsach.Size = new Size(710, 432);
             tabdanhsach.TabIndex = 1;
             tabdanhsach.Text = "Danh sách phòng";
             // 

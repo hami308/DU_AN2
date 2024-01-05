@@ -117,6 +117,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ButtonFace;
             label1.Font = new Font("Segoe UI Semibold", 23F, FontStyle.Italic, GraphicsUnit.Point);

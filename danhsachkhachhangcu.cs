@@ -53,7 +53,7 @@ namespace GiaoDien_qlpks
             loadkhachhangcu();
         }
 
-       
+
         private void dtgvkhcu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -61,16 +61,19 @@ namespace GiaoDien_qlpks
 
         private void dtgvkhcu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string mkh = " ";
+            string? mkh = null;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtgvkhcu.Rows[e.RowIndex];
                 mkh = row.Cells["MAKHACHANG"].Value.ToString();
             }
-            Form hoadon = new Hoadon(mkh);
-            this.Hide();
-            hoadon.ShowDialog();
-            this.Show();
+            if (mkh != null)
+            {
+                Form hoadon = new Hoadon(mkh);
+                this.Hide();
+                hoadon.ShowDialog();
+                this.Show();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)

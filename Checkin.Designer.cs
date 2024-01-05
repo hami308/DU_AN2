@@ -133,6 +133,7 @@
             ngaytra.Name = "ngaytra";
             ngaytra.Size = new Size(237, 31);
             ngaytra.TabIndex = 2;
+            ngaytra.Value = new DateTime(2024, 1, 5, 0, 0, 0, 0);
             // 
             // label7
             // 
@@ -207,6 +208,7 @@
             ngaydat.Name = "ngaydat";
             ngaydat.Size = new Size(238, 31);
             ngaydat.TabIndex = 2;
+            ngaydat.Value = new DateTime(2024, 1, 5, 0, 0, 0, 0);
             ngaydat.ValueChanged += ngaydat_ValueChanged;
             // 
             // label5

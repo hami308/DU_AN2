@@ -27,7 +27,7 @@ namespace GiaoDien_qlpks
             tbmakhachhang.Text = mkh;
             double tiensp = 0;
             double tienphong = 0;
-            string query = $@"SELECT TENKHACHHANG, SOPHONG, DATEDIFF(DAY, NGAYDAT, GETDATE()) AS SO_NGAY_LUU_TRU,TIENPHONG
+            string query = $@"SELECT TENKHACHHANG, SĐT,CCCD,SOPHONG,NGAYDAT,NGAYTRATHUCTE, DATEDIFF(DAY, NGAYDAT, GETDATE()) AS SO_NGAY_LUU_TRU,TIENPHONG
                             FROM [dbo].[Table_KHACHHANGCU]
                             WHERE MAKHACHANG ='{mkh}'";
             using (SqlDataReader reader = provider.ExecuteReader(query))
@@ -35,7 +35,11 @@ namespace GiaoDien_qlpks
                 while (reader.Read())
                 {
                     tbtenkhachhang.Text = reader["TENKHACHHANG"].ToString();
+                    sdt.Text = reader["SĐT"].ToString();
+                    cccd.Text = reader["CCCD"].ToString();
                     tbsophong.Text = reader["SOPHONG"].ToString();
+                    ngaydat.Text = ((DateTime)reader["NGAYDAT"]).ToString("dd/MM/yyyy");
+                    ngaytra.Text = ((DateTime)reader["NGAYTRATHUCTE"]).ToString("dd/MM/yyyy");
                     tbsongayluutru.Text = reader["SO_NGAY_LUU_TRU"].ToString();
                     tbtienphong.Text = reader["TIENPHONG"].ToString();
                     tienphong = Convert.ToDouble(tbtienphong.Text);
@@ -60,14 +64,12 @@ namespace GiaoDien_qlpks
             {
                 tiensanpham.Text = "0";
             }
+
             double tong = tiensp + tienphong;
             Tongtien.Text = tong.ToString();
 
         }
-        public Hoadon()
-        {
-            InitializeComponent();
-        }
+
 
         protected void Hoadon_Load(object sender, EventArgs e)
         {

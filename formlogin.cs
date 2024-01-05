@@ -44,9 +44,9 @@ namespace GiaoDien_qlpks
 
             string tendangnhap = textBox1.Text;
             string matkhau = textBox2.Text;
-           
 
-            if (!string.IsNullOrEmpty(tendangnhap) && !string.IsNullOrEmpty(matkhau) )
+
+            if (!string.IsNullOrEmpty(tendangnhap) && !string.IsNullOrEmpty(matkhau))
             {
                 // Kiểm tra mật khẩu 
                 DataProvider provider = new DataProvider();
@@ -58,13 +58,13 @@ namespace GiaoDien_qlpks
                     this.Hide();
                     Trangchu.ShowDialog();
                     this.Show();
- 
+
                 }
                 else
                 {
                     MessageBox.Show("Thông tin nhập đã sai . Vui lòng nhập lại!", "Thông báo");
                 }
-               
+
             }
             else
             {
